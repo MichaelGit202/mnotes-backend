@@ -1,0 +1,8 @@
+root = "."
+tmp_dir = "tmp"
+
+
+[build]
+cmd = "cmd/mnotes-backend"
+bin = "tmp/main.exe"
+full_bin = "tmp/main.exe"
