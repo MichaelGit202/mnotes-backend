@@ -7,6 +7,7 @@ exclude_dirs = ["web/client/mnotes/node_modules", "web/client/mnotes/build", "tm
 
 
 [build]
-cmd = "cmd/mnotes-backend"
+cmd = "go build -o ./tmp/main.exe ./cmd/mnotes-backend"
 bin = "tmp/main.exe"
-full_bin = "tmp/main.exe"
+
+

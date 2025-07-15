@@ -29,24 +29,24 @@ func main() {
 
 	// Fallback: serve index.html for SPA routes (React deep links)
 	app.Use(func(c *fiber.Ctx) error {
-	path := c.Path()
+		path := c.Path()
 
-	// Prevent fallback for known static asset prefixes
-	if c.Method() == fiber.MethodGet &&
-		!strings.HasPrefix(path, "/api") &&
-		!strings.HasPrefix(path, "/static") &&
-		!strings.HasPrefix(path, "/favicon") &&
-		!strings.HasPrefix(path, "/manifest") &&
-		!strings.HasPrefix(path, "/logo") {
-		return c.SendFile("./web/client/mnotes/build/index.html")
-	}
+		// Prevent fallback for known static asset prefixes
+		if c.Method() == fiber.MethodGet &&
+			!strings.HasPrefix(path, "/api") &&
+			!strings.HasPrefix(path, "/static") &&
+			!strings.HasPrefix(path, "/favicon") &&
+			!strings.HasPrefix(path, "/manifest") &&
+			!strings.HasPrefix(path, "/logo") {
+			return c.SendFile("./web/client/mnotes/build/index.html")
+		}
 
-	// Let static files (like .js/.css) be served normally
-	return c.Next()
-})
+		// Let static files (like .js/.css) be served normally
+		return c.Next()
+	})
 
 	// Start the server
-	fmt.Println("🚀 Server running at http://localhost:" + port)
+	fmt.Println("updated http://localhost:" + port)
 	if err := app.Listen(":" + port); err != nil {
 		panic(err)
 	}
