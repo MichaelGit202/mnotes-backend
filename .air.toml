@@ -1,6 +1,10 @@
 root = "."
 tmp_dir = "tmp"
 
+[watch]
+dirs = ["cmd", "internal"]
+exclude_dirs = ["web/client/mnotes/node_modules", "web/client/mnotes/build", "tmp"]
+
 
 [build]
 cmd = "cmd/mnotes-backend"
