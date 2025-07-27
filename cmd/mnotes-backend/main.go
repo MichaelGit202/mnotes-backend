@@ -5,6 +5,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/MichaelGit202/mnotes-backend/cmd/mnotes-backend/routes"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/compress"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -26,7 +27,7 @@ func main() {
 	app.Static("/", "./web/client/mnotes/build")
 
 	// Register API routes (assumes you've defined this function)
-
+	app.Get("/api/binders/:binderName/pages", routes.GetBinderPages)
 	// Fallback: serve index.html for SPA routes (React deep links)
 	app.Use(func(c *fiber.Ctx) error {
 		path := c.Path()
