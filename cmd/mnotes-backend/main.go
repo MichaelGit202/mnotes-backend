@@ -26,8 +26,13 @@ func main() {
 	// Serve static files from the React build folder
 	app.Static("/", "./web/client/mnotes/build")
 
+	//when we implement saving watch out for this, this makes whole binders dir static
+	app.Static("/thumbnails", "./binders")
+
 	// Register API routes (assumes you've defined this function)
-	app.Get("/api/binders/:binderName/pages", routes.GetBinderPages)
+	app.Get("/api/binders/index.json", routes.GetBinderThumbnails)
+	app.Get("/api/binders/:binderName/folders", routes.GetBinderFolders)
+	app.Get("/api/binders/:binderName/:folderName/:page", routes.GetPage)
 	// Fallback: serve index.html for SPA routes (React deep links)
 	app.Use(func(c *fiber.Ctx) error {
 		path := c.Path()
